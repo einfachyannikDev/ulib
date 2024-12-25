@@ -92,6 +92,21 @@ function ULib.getPlyByID( id )
 	return nil
 end
 
+function meta:UniqueID()
+	if game.SinglePlayer() then
+		return "1"
+	end
+
+	local players = player.GetAll()
+	for _, indexFn in ipairs( checkIndexes ) do
+		local id = indexFn( ply )
+		if ULib.getUser( "$" .. id, true ) == ply then
+			return id
+		end
+	end
+
+	return nil
+end
 
 --[[
 	Function: getUniqueIDForPly
@@ -111,6 +126,7 @@ end
 		v2.50 - Initial.
 		v2.51 - Added exception for single player since it's handled differently on client and server.
 ]]
+
 function ULib.getUniqueIDForPlayer( ply )
 	if game.SinglePlayer() then
 		return "1"
