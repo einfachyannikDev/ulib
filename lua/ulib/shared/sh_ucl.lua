@@ -307,21 +307,3 @@ function meta:CheckGroup( group_check )
 
 	return false
 end
-
-function meta:UniqueID() 
-
-    if game.SinglePlayer() then
-        return "1"
-    end
-
-    local players = player.GetAll()
-    for _, indexFn in ipairs( checkIndexes ) do
-        local id = indexFn( self )
-        if ULib.getUser( "$" .. id, true ) == self then
-            return id
-        end
-    end
-
-    return nil
-
-end
