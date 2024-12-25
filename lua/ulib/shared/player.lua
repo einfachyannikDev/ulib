@@ -58,8 +58,8 @@ function ULib.getPicker( ply, radius )
 end
 
 
-local Player = FindMetaTable( "Player" )
-local checkIndexes = { Player.UniqueID, function( ply ) if CLIENT then return "" end local ip = ULib.splitPort( ply:IPAddress() ) return ip end, Player.SteamID, Player.UserID }
+local meta = FindMetaTable( "Player" )
+local checkIndexes = { meta.UniqueID, function( ply ) if CLIENT then return "" end local ip = ULib.splitPort( ply:IPAddress() ) return ip end, meta.SteamID, meta.UserID }
 --[[
 	Function: getPlyByID
 
