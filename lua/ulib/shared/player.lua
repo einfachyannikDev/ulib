@@ -28,7 +28,7 @@ function ULib.getPicker( ply, radius )
 	local trace = util.GetPlayerTrace( ply )
 	local trace_results = util.TraceLine( trace )
 
-	if not trace_results.Entity:IsValid() or not trace_results.Entity:IsPlayer() then
+	if not trace_results.Entity:IsValid() or not trace_results.Entity:Is() then
 		-- Try finding a best choice
 		local best_choice
 		local best_choice_diff
