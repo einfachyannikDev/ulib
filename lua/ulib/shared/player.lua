@@ -127,7 +127,23 @@ function ULib.getUniqueIDForPlayer( ply )
 	return nil
 end
 
+function Player:UniqueID() 
 
+	if game.SinglePlayer() then
+		return "1"
+	end
+
+	local players = player.GetAll()
+	for _, indexFn in ipairs( checkIndexes ) do
+		local id = indexFn( ply )
+		if ULib.getUser( "$" .. id, true ) == ply then
+			return id
+		end
+	end
+
+	return nil
+	
+end
 --[[
 	Function: getUsers
 
